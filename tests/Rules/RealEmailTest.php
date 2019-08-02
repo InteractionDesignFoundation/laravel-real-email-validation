@@ -19,7 +19,7 @@ class RealEmailTest extends TestCase
      */
     public function it_passes_on_valid_email($validEmail)
     {
-        $rule = new RealEmail(['html5', 'strict', 'host'], false);
+        $rule = new RealEmail(['html5', 'rfc', 'host'], false);
 
         $this->assertTrue($rule->passes('random_input_name', $validEmail), $this->getErrorMessages($rule));
     }
@@ -38,11 +38,11 @@ class RealEmailTest extends TestCase
 
     /**
      * @test
-     * @dataProvider invalidEmailForStrictRfcCheckProvider
+     * @dataProvider invalidEmailForRfcCheckProvider
      */
-    public function it_fails_by_strict_check($invalidEmail)
+    public function it_fails_by_rfc_check($invalidEmail)
     {
-        $rule = new RealEmail(['strict']);
+        $rule = new RealEmail(['rfc']);
 
         $this->assertFalse($rule->passes('random_input_name', $invalidEmail), $invalidEmail);
     }
@@ -75,7 +75,7 @@ class RealEmailTest extends TestCase
         ];
     }
 
-    public function invalidEmailForStrictRfcCheckProvider()
+    public function invalidEmailForRfcCheckProvider()
     {
         return [
             ['test@example.com test'],
