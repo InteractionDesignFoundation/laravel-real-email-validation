@@ -1,0 +1,43 @@
+{
+    "name": "idf/laravel-real-email-validation",
+    "keywords": [
+        "spatie",
+        "laravel-validation-rules"
+    ],
+    "homepage": "https://github.com/InteractionDesignFoundation/laravel-real-email-validation",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1",
+        "egulias/email-validator": "^2.1",
+        "illuminate/validation": "^5.8"
+    },
+    "require-dev": {
+        "orchestra/testbench": "*",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "IDF\\RealEmailValidation\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "IDF\\RealEmailValidation\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "IDF\\RealEmailValidation\\ServiceProvider"
+            ]
+        }
+    }
+}
