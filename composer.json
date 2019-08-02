@@ -1,8 +1,10 @@
 {
     "name": "idf/laravel-real-email-validation",
+    "description": "A Laravel rule for performing email addresses validation via regex and DNS checks",
     "keywords": [
-        "spatie",
-        "laravel-validation-rules"
+        "email",
+        "email-validation",
+        "laravel-real-email-validation"
     ],
     "homepage": "https://github.com/InteractionDesignFoundation/laravel-real-email-validation",
     "license": "MIT",
