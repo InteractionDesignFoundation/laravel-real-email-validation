@@ -1,11 +1,11 @@
 # Real email validation for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/idf/laravel-real-email-validation.svg?style=flat-square)](https://packagist.org/packages/idf/laravel-real-email-validation)
-[![Code coverage](https://scrutinizer-ci.com/g/idf/laravel-real-email-validatio/badges/coverage.png)](https://scrutinizer-ci.com/g/idf/laravel-real-email-validation)
-[![Build Status](https://img.shields.io/travis/idf/laravel-real-email-validatio/master.svg?style=flat-square)](https://travis-ci.org/idf/laravel-real-email-validation)
+[![Code coverage](https://scrutinizer-ci.com/g/InteractionDesignFoundation/laravel-real-email-validatio/badges/coverage.png)](https://scrutinizer-ci.com/g/InteractionDesignFoundation/laravel-real-email-validation)
+[![Build Status](https://img.shields.io/travis/InteractionDesignFoundation/laravel-real-email-validatio/master.svg?style=flat-square)](https://travis-ci.org/InteractionDesignFoundation/laravel-real-email-validation)
 [![StyleCI](https://github.styleci.io/repos/200292916/shield?branch=master)](https://github.styleci.io/repos/200292916)
-[![Quality Score](https://img.shields.io/scrutinizer/g/idf/laravel-real-email-validation.svg?style=flat-square)](https://scrutinizer-ci.com/g/idf/laravel-real-email-validation)
-[![Total Downloads](https://img.shields.io/packagist/dt/idf/laravel-real-email-validation.svg?style=flat-square)](https://packagist.org/packages/idf/laravel-real-email-validation)
+[![Quality Score](https://img.shields.io/scrutinizer/g/InteractionDesignFoundation/laravel-real-email-validation.svg?style=flat-square)](https://scrutinizer-ci.com/g/InteractionDesignFoundation/laravel-real-email-validation)
+[![Total Downloads](https://img.shields.io/packagist/dt/InteractionDesignFoundation/laravel-real-email-validation.svg?style=flat-square)](https://packagist.org/packages/InteractionDesignFoundation/laravel-real-email-validation)
 
 Laravel has a good `email` validation rule, but it can miss some invalid email addresses.
 This packages aims to cover more cases.
