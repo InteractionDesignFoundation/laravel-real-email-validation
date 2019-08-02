@@ -1,14 +1,16 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace IDF\RealEmailValidation\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\NoRFCWarningsValidation;
-use Illuminate\Contracts\Validation\Rule;
 
 /**
  * Inspired by
- * https://github.com/symfony/symfony/blob/4.4/src/Symfony/Component/Validator/Constraints/EmailValidator.php
+ * https://github.com/symfony/symfony/blob/4.4/src/Symfony/Component/Validator/Constraints/EmailValidator.php.
  */
 final class RealEmail implements Rule
 {
@@ -22,7 +24,7 @@ final class RealEmail implements Rule
     public const CONSTRAIN_MX = 'mx';
 
     /**
-     * Matches the pattern used for the HTML5 email input element
+     * Matches the pattern used for the HTML5 email input element.
      * @see https://html.spec.whatwg.org/multipage/forms.html#email-state-typeemail
      */
     public const CONSTRAIN_HTML5 = 'html5';
@@ -40,12 +42,12 @@ final class RealEmail implements Rule
         $this->bail = $bail;
     }
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function passes($attribute, $email): bool
     {
         $this->messages = [];
 
-        if ($this->hasConstraint('html5') && !$this->checkHtml5($email)) {
+        if ($this->hasConstraint('html5') && ! $this->checkHtml5($email)) {
             $this->messages[] = __('realEmailValidation::messages.html5');
             if ($this->bail) {
                 return false;
@@ -54,7 +56,7 @@ final class RealEmail implements Rule
 
         if ($this->hasConstraint('rfc')) {
             $rfcValidator = new EmailValidator();
-            $hasHtml5Error = !$rfcValidator->isValid($email, new NoRFCWarningsValidation());
+            $hasHtml5Error = ! $rfcValidator->isValid($email, new NoRFCWarningsValidation());
             if ($hasHtml5Error) {
                 $this->messages[] = __('realEmailValidation::messages.rfc');
                 if ($this->bail) {
@@ -65,14 +67,14 @@ final class RealEmail implements Rule
 
         $host = (string) substr($email, strrpos($email, '@') + 1);
 
-        if ($this->hasConstraint('mx') && !$this->checkMX($host)) {
+        if ($this->hasConstraint('mx') && ! $this->checkMX($host)) {
             $this->messages[] = __('realEmailValidation::messages.mx');
             if ($this->bail) {
                 return false;
             }
         }
 
-        if ($this->hasConstraint('host') && !$this->checkHost($host)) {
+        if ($this->hasConstraint('host') && ! $this->checkHost($host)) {
             $this->messages[] = __('realEmailValidation::messages.host');
             if ($this->bail) {
                 return false;
@@ -82,7 +84,7 @@ final class RealEmail implements Rule
         return count($this->messages) === 0;
     }
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function message(): array
     {
         return $this->messages;
@@ -94,7 +96,7 @@ final class RealEmail implements Rule
     }
 
     /**
-     * Check against HTML5 pattern
+     * Check against HTML5 pattern.
      */
     private function checkHtml5(string $email): bool
     {

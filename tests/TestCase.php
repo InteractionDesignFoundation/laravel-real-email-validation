@@ -3,8 +3,8 @@
 namespace IDF\RealEmailValidation\Tests;
 
 use IDF\RealEmailValidation\ServiceProvider;
-use Illuminate\Contracts\Foundation\Application;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Illuminate\Contracts\Foundation\Application;
 
 abstract class TestCase extends Orchestra
 {

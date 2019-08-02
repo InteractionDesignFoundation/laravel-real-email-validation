@@ -2,13 +2,13 @@
 
 namespace IDF\RealEmailValidation\Tests\Rules;
 
-use IDF\RealEmailValidation\Rules\RealEmail;
-use IDF\RealEmailValidation\Tests\TestCase;
 use Illuminate\Contracts\Validation\Rule;
+use IDF\RealEmailValidation\Tests\TestCase;
+use IDF\RealEmailValidation\Rules\RealEmail;
 
 /**
  * Inspired by
- * https://github.com/symfony/validator/blob/4.4/Tests/Constraints/EmailValidatorTest.php
+ * https://github.com/symfony/validator/blob/4.4/Tests/Constraints/EmailValidatorTest.php.
  */
 class RealEmailTest extends TestCase
 {
