@@ -38,6 +38,18 @@ class RealEmailTest extends TestCase
 
     /**
      * @test
+     * @dataProvider invalidEmailsForMissingHostCheckProvider
+     * @group network
+     */
+    public function it_fails_on_missing_host($invalidEmail)
+    {
+        $rule = new RealEmail(['host']);
+
+        $this->assertFalse($rule->passes('random_input_name', $invalidEmail));
+    }
+
+    /**
+     * @test
      * @dataProvider invalidEmailForRfcCheckProvider
      */
     public function it_fails_by_rfc_check($invalidEmail)
@@ -72,6 +84,15 @@ class RealEmailTest extends TestCase
         return [
             ['example@gmail.con'],
             ['example@gmail.ocm'],
+        ];
+    }
+
+    public function invalidEmailsForMissingHostCheckProvider()
+    {
+        return [
+            ['example'],
+            ['example@'],
+            ['gmail.com'],
         ];
     }
 
