@@ -130,6 +130,6 @@ final class RealEmail implements Rule
      */
     private function checkHost(string $host): bool
     {
-        return $this->checkMX($host) || (checkdnsrr($host, 'A') || checkdnsrr($host, 'AAAA'));
+        return checkdnsrr($host, 'A') || checkdnsrr($host, 'AAAA') || $this->checkMX($host);
     }
 }
