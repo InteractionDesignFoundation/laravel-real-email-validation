@@ -73,7 +73,7 @@ final class RealEmail implements Rule
             }
         } else {
             $emailTail = (string) substr($email, $hostSeparatorPosition + 1);
-            $host = idn_to_ascii($emailTail);
+            $host = idn_to_ascii($emailTail, 0, INTL_IDNA_VARIANT_UTS46);
             if (substr($host, -1) !== '.') {
                 $host .= '.';
             }
