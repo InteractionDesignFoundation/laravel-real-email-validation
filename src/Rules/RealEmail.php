@@ -66,7 +66,7 @@ final class RealEmail implements Rule
         }
 
         $hostSeparatorPosition = strrpos($email, '@');
-        if ($hostSeparatorPosition === FALSE || $hostSeparatorPosition === strlen($email) - 1) {
+        if ($hostSeparatorPosition === false || $hostSeparatorPosition === strlen($email) - 1) {
             $this->messages[] = __('realEmailValidation::messages.nohost');
             if ($this->bail) {
                 return false;
