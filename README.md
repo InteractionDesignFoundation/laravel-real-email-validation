@@ -7,6 +7,8 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/idf/laravel-real-email-validation.svg?style=flat-square)](https://packagist.org/packages/idf/laravel-real-email-validation)
 [![Total Downloads](https://img.shields.io/packagist/dt/idf/laravel-real-email-validation.svg?style=flat-square)](https://packagist.org/packages/idf/laravel-real-email-validation)
 
+> ⚠️ This feature is available in Laravel from v5.8.33 (see [PR](https://github.com/laravel/framework/pull/29589)) and thus this package is deprecated.
+
 Laravel has a good `email` validation rule, but it can miss some invalid email addresses.
 This packages aims to cover more cases.
 
