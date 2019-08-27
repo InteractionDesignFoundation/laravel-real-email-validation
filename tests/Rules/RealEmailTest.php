@@ -144,7 +144,6 @@ class RealEmailTest extends TestCase
             ['"test"."test"@iana.org'],
             ['"test".test@iana.org'],
             ['"test"'.\chr(0).'@iana.org'],
-            ['"test\"@iana.org'],
             [\chr(226).'@iana.org'],
             ['test@'.\chr(226).'.org'],
             ['\r\ntest@iana.org'],
