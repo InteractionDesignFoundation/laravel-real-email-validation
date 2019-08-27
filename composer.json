@@ -11,7 +11,8 @@
     "require": {
         "php": ">=7.1",
         "egulias/email-validator": "^2.1.11",
-        "illuminate/validation": "^5.8"
+        "illuminate/validation": "^5.8",
+        "symfony/polyfill-intl-idn": "^1.12"
     },
     "require-dev": {
         "orchestra/testbench": "*",
