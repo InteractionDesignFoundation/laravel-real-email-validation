@@ -65,19 +65,31 @@ final class RealEmail implements Rule
             }
         }
 
-        $host = (string) substr($email, strrpos($email, '@') + 1);
-
-        if ($this->hasConstraint('mx') && ! $this->checkMX($host)) {
-            $this->messages[] = __('realEmailValidation::messages.mx');
+        $hostSeparatorPosition = strrpos($email, '@');
+        if ($hostSeparatorPosition === false || $hostSeparatorPosition === strlen($email) - 1) {
+            $this->messages[] = __('realEmailValidation::messages.nohost');
             if ($this->bail) {
                 return false;
             }
-        }
+        } else {
+            $emailTail = (string) substr($email, $hostSeparatorPosition + 1);
+            $host = idn_to_ascii($emailTail, 0, INTL_IDNA_VARIANT_UTS46);
+            if (substr($host, -1) !== '.') {
+                $host .= '.';
+            }
 
-        if ($this->hasConstraint('host') && ! $this->checkHost($host)) {
-            $this->messages[] = __('realEmailValidation::messages.host');
-            if ($this->bail) {
-                return false;
+            if ($this->hasConstraint('mx') && ! $this->checkMX($host)) {
+                $this->messages[] = __('realEmailValidation::messages.mx');
+                if ($this->bail) {
+                    return false;
+                }
+            }
+
+            if ($this->hasConstraint('host') && ! $this->checkHost($host)) {
+                $this->messages[] = __('realEmailValidation::messages.host');
+                if ($this->bail) {
+                    return false;
+                }
             }
         }
 
@@ -110,7 +122,7 @@ final class RealEmail implements Rule
      */
     private function checkMX(string $host): bool
     {
-        return $host !== '' && checkdnsrr($host, 'MX');
+        return checkdnsrr($host, 'MX');
     }
 
     /**
@@ -118,7 +130,6 @@ final class RealEmail implements Rule
      */
     private function checkHost(string $host): bool
     {
-        return $host !== ''
-            && ($this->checkMX($host) || (checkdnsrr($host, 'A') || checkdnsrr($host, 'AAAA')));
+        return checkdnsrr($host, 'A') || checkdnsrr($host, 'AAAA') || $this->checkMX($host);
     }
 }
