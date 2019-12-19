@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace IDF\RealEmailValidation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\NoRFCWarningsValidation;
+use Illuminate\Contracts\Validation\Rule;
 
 /**
  * Inspired by
